@@ -8,6 +8,7 @@ import { Chart } from 'chart.js';
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss']
 })
+
 export class HomepageComponent implements OnInit {
 
   public dataSource = {
@@ -34,10 +35,10 @@ export class HomepageComponent implements OnInit {
     this.http.get('http://localhost:3000/budget')
     .subscribe((res: any) =>
     {
-      for (var i = 0; i < res.budget.length; i++)
+      for (var i = 0; i < res.length; i++)
         {
-          this.dataSource.datasets[0].data[i] = res.budget[i].budget;
-          this.dataSource.labels[i] = res.budget[i].title;
+          this.dataSource.datasets[0].data[i] = res[i].budget;
+          this.dataSource.labels[i] = res[i].title;
           this.createChart();
         }
     });
@@ -45,7 +46,6 @@ export class HomepageComponent implements OnInit {
 
   createChart()
         {
-            // var ctx = document.getElementById("myChart").getContext("2d");
             var ctx = document.getElementById('myChart');
             var myPieChart = new Chart(ctx,
             {
