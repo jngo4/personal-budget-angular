@@ -39,8 +39,8 @@ export class HomepageComponent implements OnInit {
         {
           this.dataSource.datasets[0].data[i] = res[i].budget;
           this.dataSource.labels[i] = res[i].title;
-          this.createChart();
         }
+        this.createChart();
     });
   }
 
